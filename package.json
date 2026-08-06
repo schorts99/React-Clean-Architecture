@@ -1,6 +1,10 @@
 {
-  "name": "react-clean-architecture",
-  "private": true,
+  "name": "@schorts/react-clean-architecture",
+  "author": {
+    "url": "https://github.com/schorts99",
+    "email": "schorts@outlook.com",
+    "name": "Jorge Castillo"
+  },
   "type": "module",
   "scripts": {
     "build": "react-router build",
@@ -11,10 +15,13 @@
   "dependencies": {
     "@react-router/node": "^8",
     "@react-router/serve": "^8",
+    "@schorts/shared-kernel": "^9.24.0",
+    "inversify": "^8.2.3",
     "isbot": "^5.1.36",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-router": "^8"
+    "react-router": "^8",
+    "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
     "@react-router/dev": "^8",

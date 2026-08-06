@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import {
   isRouteErrorResponse,
   Links,
@@ -9,6 +10,10 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { TYPES } from "../di/types";
+import { type AuthProvider } from "../modules/common/auth/providers";
+
+import { Providers } from "~/providers";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -41,8 +46,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+export async function loader({ request }: Route.LoaderArgs) {
+  const { createServerContainer } = await import("../di/container.server");
+
+  const container = createServerContainer(request);
+  const authProvider = container.get<AuthProvider>(TYPES.AUTH_PROVIDER);
+
+  return {
+    isAuthenticated: await authProvider.isAuthenticated(),
+    currentUser: (await authProvider.getCurrentUser())?.toPrimitives(),
+  };
+}
+
 export default function App() {
-  return <Outlet />;
+  return (
+    <Providers>
+      <Outlet />
+    </Providers>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
