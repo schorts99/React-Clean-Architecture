@@ -14,6 +14,7 @@ import { TYPES } from "../di/types";
 import { type AuthProvider } from "../modules/common/auth/providers";
 
 import { Providers } from "~/providers";
+import { MainLayout } from "~/layouts/main-layout";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -61,7 +62,9 @@ export async function loader({ request }: Route.LoaderArgs) {
 export default function App() {
   return (
     <Providers>
-      <Outlet />
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
     </Providers>
   );
 }

@@ -1,0 +1,2 @@
+minimumReleaseAgeExclude:
+  - '@schorts/shared-kernel@9.24.0'
