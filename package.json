@@ -15,7 +15,9 @@
   "dependencies": {
     "@react-router/node": "^8",
     "@react-router/serve": "^8",
-    "@schorts/shared-kernel": "^9.24.0",
+    "@schorts/browser-cache": "^1.2.0",
+    "@schorts/indexed-db-dao": "^2.1.0",
+    "@schorts/shared-kernel": "^10.0.0",
     "inversify": "^8.2.3",
     "isbot": "^5.1.36",
     "lucide-react": "^1.28.0",

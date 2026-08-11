@@ -1,12 +1,12 @@
 import { createContext, type ReactNode, useState, useContext, useEffect } from "react";
 import { useRouteLoaderData } from "react-router";
 
-import { type UserModel } from "../../models";
+import { type UserSchema } from "../../modules/common/users/infrastructure/database/schemas";
 
 import { DependencyInjectionContext } from "~/contexts/dependency-injection.context";
 
-import { type AuthProvider } from "../../modules/common/auth/providers";
-import { UserEntity } from "../../modules/common/users/entities";
+import { type AuthProvider } from "../../modules/common/auth/application/interfaces";
+import { UserEntity } from "../../modules/common/users/domain/entities";
 
 export const CurrentUserContext = createContext<{
   currentUser: UserEntity | null;
@@ -16,7 +16,7 @@ export const CurrentUserContext = createContext<{
 
 export function CurrentUserProvider({ children }: { children: ReactNode }) {
   const { currentUser: user } = useRouteLoaderData("root") as {
-    currentUser: UserModel | null;
+    currentUser: UserSchema | null;
   };
   const { container, TYPES } = useContext(DependencyInjectionContext);
   const authProvider = container.get<AuthProvider>(TYPES.AUTH_PROVIDER);

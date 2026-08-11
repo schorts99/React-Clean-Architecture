@@ -4,4 +4,12 @@ export const TYPES = {
   JWT_DECODER: Symbol.for("JWT_DECODER"),
   JWT_ENCODER: Symbol.for("JWT_ENCODER"),
   REQUEST: Symbol.for("REQUEST"),
+  INDEXED_DB: Symbol.for("INDEXED_DB"),
+  ENTITY_DAO: Symbol.for("ENTITY_DAO"),
+  USE_CASE_DAO: Symbol.for("USE_CASE_DAO"),
+  INFRASTRUCTURE_DAO: Symbol.for("INFRASTRUCTURE_DAO"),
+  OVERVIEW_QUERY_SERVICE: Symbol.for("OVERVIEW_QUERY_SERVICE"),
+  LOGGER: Symbol.for("LOGGER"),
+  CACHE: Symbol.for("CACHE"),
+  QUERY_BUS: Symbol.for("QUERY_BUS"),
 }

@@ -11,10 +11,16 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { TYPES } from "../di/types";
-import { type AuthProvider } from "../modules/common/auth/providers";
+import { registerEntities } from "./bootstrap";
+import { registerQueries } from "./bootstrap";
 
 import { Providers } from "~/providers";
 import { MainLayout } from "~/layouts/main-layout";
+
+import { type AuthProvider } from "../modules/common/auth/application/interfaces";
+
+registerEntities();
+registerQueries();
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

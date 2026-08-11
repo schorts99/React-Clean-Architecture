@@ -2,9 +2,12 @@ import { Container } from 'inversify';
 
 import { TYPES } from "./types";
 
-import { type AuthProvider, FakeAuthProvider } from "../modules/common/auth/providers";
-import { type AppStateManager } from "../modules/common/state/app.state-manager";
-import { AppServerStateManager } from "../modules/common/state/app-server.state-manager";
+import { FakeAuthProvider } from "../modules/common/auth/infrastructure/providers";
+import { AppServerStateManager } from "../modules/common/state/infrastructure/state/app-server.state-manager";
+
+import type { AuthProvider } from "../modules/common/auth/application/interfaces";
+import { type AppStateManager } from "../modules/common/state/application/interfaces";
+
 import { type JWTDecoder } from "../modules/shared/jwt/jwt.decoder";
 import { type JWTEncoder } from "../modules/shared/jwt/jwt.encoder";
 import { JWTServerDecoder } from "../modules/shared/jwt/jwt-server.decoder";

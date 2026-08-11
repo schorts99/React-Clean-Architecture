@@ -14,9 +14,15 @@ importers:
       '@react-router/serve':
         specifier: ^8
         version: 8.3.0(react-router@8.3.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(typescript@5.9.3)
+      '@schorts/browser-cache':
+        specifier: ^1.2.0
+        version: 1.2.0(@schorts/shared-kernel@10.0.0)
+      '@schorts/indexed-db-dao':
+        specifier: ^2.1.0
+        version: 2.1.0(@schorts/shared-kernel@10.0.0)
       '@schorts/shared-kernel':
-        specifier: ^9.24.0
-        version: 9.24.0
+        specifier: ^10.0.0
+        version: 10.0.0
       inversify:
         specifier: ^8.2.3
         version: 8.2.3(reflect-metadata@0.2.2)
@@ -384,8 +390,18 @@ packages:
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
-  '@schorts/shared-kernel@9.24.0':
-    resolution: {integrity: sha512-oPmJ+uoUGmSNdCvYhunvu45DoKjfGJi40O2O7kzMFsQLLIy3w4d2jLof+AlxwQ9fIEruvTDzsoIMlA4bhekxFQ==}
+  '@schorts/browser-cache@1.2.0':
+    resolution: {integrity: sha512-kPv0P4xsKscDWPEdoqoLzqYg8OvT9BA11XgCh7Ii4KE7QOY1l2ZRqsmtZHhQwzbmJssTMhkLLoqqFQOK/JgbcQ==}
+    peerDependencies:
+      '@schorts/shared-kernel': ^9.19.0
+
+  '@schorts/indexed-db-dao@2.1.0':
+    resolution: {integrity: sha512-YanL9d6k/mxn6zyNqV7FZglbDRSj7DfkW8CBmCL4B5JLX8u69uos6dE3h5G3KkZvtTo41lUsT08PspbGrqYWQw==}
+    peerDependencies:
+      '@schorts/shared-kernel': ^9.24.1
+
+  '@schorts/shared-kernel@10.0.0':
+    resolution: {integrity: sha512-e9bc4QZxbskcO7T2h3981F+KOv4+tk/NRq+9KtuJtxm1kv+YBW4PfJdcTopdXKttQZrDWIpvKnu+7pcw53qwrg==}
 
   '@tailwindcss/node@4.3.3':
     resolution: {integrity: sha512-/T8IKEsf9VTU6tLjgC7+sv2mOPtQxzE2jMw7u4Tt40Tx+QSZxpzh95/H6cMKoja9XuW7iMdLJYBB0o9G1CaAgg==}
@@ -1587,7 +1603,15 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.1': {}
 
-  '@schorts/shared-kernel@9.24.0': {}
+  '@schorts/browser-cache@1.2.0(@schorts/shared-kernel@10.0.0)':
+    dependencies:
+      '@schorts/shared-kernel': 10.0.0
+
+  '@schorts/indexed-db-dao@2.1.0(@schorts/shared-kernel@10.0.0)':
+    dependencies:
+      '@schorts/shared-kernel': 10.0.0
+
+  '@schorts/shared-kernel@10.0.0': {}
 
   '@tailwindcss/node@4.3.3':
     dependencies:
