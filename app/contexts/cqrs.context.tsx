@@ -4,7 +4,9 @@ import { InMemoryQueryBus, type QueryBus } from "@schorts/shared-kernel";
 import { DependencyInjectionContext } from "~/contexts/dependency-injection.context";
 
 import { GetOverviewQuery } from "../../modules/demo/overview/application/queries";
-import { type GetOverviewQueryHandler } from "../../modules/demo/overview/application/query-handlers";
+import type { GetOverviewQueryHandler } from "../../modules/demo/overview/application/query-handlers";
+import { GetAllEntitiesQuery } from "../../modules/demo/entities/application/queries";
+import type { GetAllEntitiesQueryHandler } from "../../modules/demo/entities/application/query-handlers";
 
 export const CQRSContext = createContext<{
   queryBus: QueryBus;
@@ -26,6 +28,10 @@ export function CQRSProvider({
         queryBusInstance.register(
           GetOverviewQuery.type,
           container.get<GetOverviewQueryHandler>(TYPES.GET_OVERVIEW_QUERY_HANDLER),
+        );
+        queryBusInstance.register(
+          GetAllEntitiesQuery.type,
+          container.get<GetAllEntitiesQueryHandler>(TYPES.GET_ALL_ENTITIES_QUERY_HANDLER),
         );
       }
     }

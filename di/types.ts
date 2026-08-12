@@ -11,5 +11,6 @@ export const TYPES = {
   LOGGER: Symbol.for("LOGGER"),
   CACHE: Symbol.for("CACHE"),
   GET_OVERVIEW_QUERY_HANDLER: Symbol.for("GET_OVERVIEW_QUERY_HANDLER"),
+  GET_ALL_ENTITIES_QUERY_HANDLER: Symbol.for("GET_ALL_ENTITIES_QUERY"),
   QUERY_BUS: Symbol.for("QUERY_BUS"),
 }

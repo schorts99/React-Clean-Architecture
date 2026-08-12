@@ -17,7 +17,10 @@ export function Entities() {
         {loading
           ? null
           : entities.map((entity) => (
-            <EntityCard key={entity.id} />
+            <EntityCard
+              key={entity.id}
+              entity={entity}
+            />
           ))}
       </div>
     </>

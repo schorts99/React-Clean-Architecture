@@ -67,4 +67,28 @@ export class GetOverviewQueryHandler extends AbstractQueryHandler<
   override getCacheTags(): string[] {
     return ["overview"];
   }
+
+  override serializeResult(result: GetOverviewQueryResultDto): {
+    entities_count: number;
+    infrastructures_count: number;
+    use_cases_count: number;
+  } {
+    return  {
+      entities_count: result.entitiesCount,
+      infrastructures_count: result.infrastructuresCount,
+      use_cases_count: result.useCasesCount,
+    };
+  }
+
+  override deserializeResult(payload: {
+    entities_count: number;
+    infrastructures_count: number;
+    use_cases_count: number;
+  }): GetOverviewQueryResultDto {
+    return {
+      entitiesCount: payload.entities_count,
+      infrastructuresCount: payload.infrastructures_count,
+      useCasesCount: payload.use_cases_count,
+    };
+  }
 }

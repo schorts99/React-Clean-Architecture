@@ -13,17 +13,17 @@ import { TYPES } from "./types";
 
 import { FakeAuthProvider } from "../modules/common/auth/infrastructure/providers";
 import { AppBrowserStateManager } from "../modules/common/state/infrastructure/state/app-browser.state-manager";
-import type { EntityDao } from "../modules/demo/entities/application/interfaces";
 import { EntityIndexedDbDao } from "../modules/demo/entities/infrastructure/database/dao";
-import type { UseCaseDao } from "../modules/demo/use-cases/application/interfaces";
 import { UseCaseIndexedDbDao } from "../modules/demo/use-cases/infrastructure/database/dao";
-import type { InfrastructureDao } from "../modules/demo/infrastructures/application/interfaces";
 import { InfrastructureIndexedDbDao } from "../modules/demo/infrastructures/infrastructure/database/dao";
 
+import type { EntityDao } from "../modules/demo/entities/application/interfaces";
+import type { UseCaseDao } from "../modules/demo/use-cases/application/interfaces";
+import type { InfrastructureDao } from "../modules/demo/infrastructures/application/interfaces";
 import { GetOverviewQueryHandler } from "../modules/demo/overview/application/query-handlers";
-
 import { type AppStateManager } from "../modules/common/state/application/interfaces";
 import { type AuthProvider } from '../modules/common/auth/application/interfaces';
+import { GetAllEntitiesQueryHandler } from "../modules/demo/entities/application/query-handlers";
 
 import { type JWTDecoder } from "../modules/shared/jwt/jwt.decoder";
 import { type JWTEncoder } from "../modules/shared/jwt/jwt.encoder";
@@ -86,6 +86,10 @@ export function createBrowserContainer(): Container {
   container
     .bind<GetOverviewQueryHandler>(TYPES.GET_OVERVIEW_QUERY_HANDLER)
     .to(GetOverviewQueryHandler)
+    .inSingletonScope();
+  container
+    .bind<GetAllEntitiesQueryHandler>(TYPES.GET_ALL_ENTITIES_QUERY_HANDLER)
+    .to(GetAllEntitiesQueryHandler)
     .inSingletonScope();
   container.bind<QueryBus>(TYPES.QUERY_BUS).to(InMemoryQueryBus).inSingletonScope();
 
