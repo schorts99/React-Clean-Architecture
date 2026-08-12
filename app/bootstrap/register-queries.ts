@@ -2,6 +2,7 @@ import { QueryRegistry } from "@schorts/shared-kernel";
 
 import { GetOverviewQuery } from "../../modules/demo/overview/application/queries";
 import { GetAllEntitiesQuery } from "../../modules/demo/entities/application/queries";
+import { GetAllUseCasesQuery } from "../../modules/demo/use-cases/application/queries";
 
 export function registerQueries(): void {
   QueryRegistry.register(
@@ -11,5 +12,9 @@ export function registerQueries(): void {
   QueryRegistry.register(
     GetAllEntitiesQuery.type,
     GetAllEntitiesQuery,
+  );
+  QueryRegistry.register(
+    GetAllUseCasesQuery.type,
+    GetAllUseCasesQuery,
   );
 }
