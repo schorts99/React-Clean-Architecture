@@ -1,4 +1,4 @@
-import type { InfrastructureDao } from "../interfaces";
+import type { InfrastructureDao } from "../../../application/interfaces";
 
 import { InfrastructureEntity } from "../../../domain/entities";
 

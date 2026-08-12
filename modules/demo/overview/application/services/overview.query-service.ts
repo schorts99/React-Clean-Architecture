@@ -1,7 +1,5 @@
+import type { GetOverviewQueryResultDto } from "../dtos";
+
 export interface OverviewQueryService {
-  getCounts(): Promise<{
-    entitiesCount: number;
-    useCasesCount: number;
-    infrastructuresCount: number;
-  }>;
+  getCounts(): Promise<GetOverviewQueryResultDto>;
 }

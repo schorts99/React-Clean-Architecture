@@ -1,16 +1,16 @@
 import { ArrayValue, rule } from "@schorts/shared-kernel";
 
-import type { UseCaseSchema } from "../../infrastructure/database/schemas";
+import type { UseCasePrimitives } from "../types";
 
 const SCHEMA = {
   name: [rule({ required: true }), rule({ type: 'string' })],
 };
 
-export class DependenciesValue extends ArrayValue<UseCaseSchema["dependencies"][number]> {
+export class DependenciesValue extends ArrayValue<UseCasePrimitives["dependencies"][number]> {
   readonly attributeName = "dependencies";
   readonly isPrimitive = false;
 
-  constructor(value: UseCaseSchema["dependencies"]) {
+  constructor(value: UseCasePrimitives["dependencies"]) {
     super(value, SCHEMA);
   }
 }

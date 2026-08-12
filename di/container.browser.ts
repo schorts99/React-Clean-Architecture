@@ -13,15 +13,13 @@ import { TYPES } from "./types";
 
 import { FakeAuthProvider } from "../modules/common/auth/infrastructure/providers";
 import { AppBrowserStateManager } from "../modules/common/state/infrastructure/state/app-browser.state-manager";
-import type { EntityDao } from "../modules/demo/entities/infrastructure/database/interfaces";
+import type { EntityDao } from "../modules/demo/entities/application/interfaces";
 import { EntityIndexedDbDao } from "../modules/demo/entities/infrastructure/database/dao";
-import type { UseCaseDao } from "../modules/demo/use-cases/infrastructure/database/interfaces";
+import type { UseCaseDao } from "../modules/demo/use-cases/application/interfaces";
 import { UseCaseIndexedDbDao } from "../modules/demo/use-cases/infrastructure/database/dao";
-import type { InfrastructureDao } from "../modules/demo/infrastructures/infrastructure/database/interfaces";
+import type { InfrastructureDao } from "../modules/demo/infrastructures/application/interfaces";
 import { InfrastructureIndexedDbDao } from "../modules/demo/infrastructures/infrastructure/database/dao";
-import { OverviewDatabaseQueryService } from "../modules/demo/overview/infrastructure/database/services";
 
-import type { OverviewQueryService } from "../modules/demo/overview/application/services";
 import { GetOverviewQueryHandler } from "../modules/demo/overview/application/query-handlers";
 
 import { type AppStateManager } from "../modules/common/state/application/interfaces";
@@ -85,9 +83,6 @@ export function createBrowserContainer(): Container {
     );
   }
 
-  container
-    .bind<OverviewQueryService>(TYPES.OVERVIEW_QUERY_SERVICE)
-    .to(OverviewDatabaseQueryService);
   container
     .bind<GetOverviewQueryHandler>(TYPES.GET_OVERVIEW_QUERY_HANDLER)
     .to(GetOverviewQueryHandler)

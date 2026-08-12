@@ -7,9 +7,11 @@ import { injectable, inject } from "inversify";
 
 import { TYPES } from "../../../../../di/types";
 
-import  { type GetOverviewQuery } from "../queries";
+import type { GetOverviewQuery } from "../queries";
+import type { EntityDao } from "../../../entities/application/interfaces";
+import type { UseCaseDao } from "../../../use-cases/application/interfaces";
+import type { InfrastructureDao } from "../../../infrastructures/application/interfaces";
 import type { GetOverviewQueryResultDto } from "../dtos";
-import type { OverviewQueryService } from "../services";
 
 @injectable()
 export class GetOverviewQueryHandler extends AbstractQueryHandler<
@@ -17,12 +19,16 @@ export class GetOverviewQueryHandler extends AbstractQueryHandler<
   GetOverviewQueryResultDto
 > {
   constructor(
-    @inject(TYPES.OVERVIEW_QUERY_SERVICE)
-    private readonly queryService: OverviewQueryService,
     @inject(TYPES.CACHE)
     cacheStore: SharedCache,
     @inject(TYPES.LOGGER)
     logger: Logger,
+    @inject(TYPES.ENTITY_DAO)
+    private readonly entityDao: EntityDao,
+    @inject(TYPES.USE_CASE_DAO)
+    private readonly useCaseDao: UseCaseDao,
+    @inject(TYPES.INFRASTRUCTURE_DAO)
+    private readonly infrastructureDao: InfrastructureDao,
   ) {
     super({
       cache: false,
@@ -35,7 +41,17 @@ export class GetOverviewQueryHandler extends AbstractQueryHandler<
   }
 
   async execute(_query: GetOverviewQuery): Promise<GetOverviewQueryResultDto> {
-    return await this.queryService.getCounts();
+    const [entitiesCount, useCasesCount, infrastructuresCount] = await Promise.all([
+      this.entityDao.count(),
+      this.useCaseDao.count(),
+      this.infrastructureDao.count(),
+    ]);
+
+    return {
+      entitiesCount,
+      useCasesCount,
+      infrastructuresCount,
+    };
   }
 
   override getCacheKey(query: GetOverviewQuery) {

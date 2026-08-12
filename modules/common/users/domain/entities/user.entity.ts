@@ -1,10 +1,10 @@
 import { Entity } from "@schorts/shared-kernel";
 
-import type { UserModel } from "../../../../models";
+import type { UserPrimitives } from "../types";
 
 import { IDValue, NameValue } from "../value-objects";
 
-export class UserEntity extends Entity<IDValue, UserModel> {
+export class UserEntity extends Entity<IDValue, UserPrimitives> {
   constructor(
     id: IDValue,
     readonly name: NameValue,
@@ -12,17 +12,17 @@ export class UserEntity extends Entity<IDValue, UserModel> {
     super(id);
   }
 
-  toPrimitives(): UserModel {
+  toPrimitives(): UserPrimitives {
     return {
       id: this.id.value,
       name: this.name.value,
     };
   }
 
-  static fromPrimitives(model: UserModel): UserEntity {
+  static fromPrimitives(primitives: UserPrimitives): UserEntity {
     return new UserEntity(
-      new IDValue(model.id as string),
-      new NameValue(model.name),
+      new IDValue(primitives.id),
+      new NameValue(primitives.name),
     );
   }
 }

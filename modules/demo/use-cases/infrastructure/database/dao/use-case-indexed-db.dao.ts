@@ -3,7 +3,8 @@ import { injectable } from "inversify";
 
 import type { UseCaseSchema } from "../schemas";
 
-import type { UseCaseDao } from "../interfaces";
+import type { UseCaseDao } from "../../../application/interfaces";
+
 import { UseCaseEntity } from "../../../domain/entities";
 
 @injectable()

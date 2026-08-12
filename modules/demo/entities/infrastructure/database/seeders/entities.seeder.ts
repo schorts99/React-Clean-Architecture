@@ -1,4 +1,4 @@
-import type { EntityDao } from "../interfaces";
+import type { EntityDao } from "../../../application/interfaces";
 
 import { EntityEntity } from "../../../domain/entities";
 

@@ -3,7 +3,7 @@ import { useRouteLoaderData } from "react-router";
 
 import { DependencyInjectionContext } from "~/contexts/dependency-injection.context";
 
-import { type AuthProvider as IAuthProvider } from "../../modules/common/auth/infrastructure/providers";
+import { type AuthProvider as IAuthProvider } from "../../modules/common/auth/application/interfaces";
 
 export const AuthContext = createContext({
   isAuthenticated: false,

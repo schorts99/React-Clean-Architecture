@@ -3,7 +3,8 @@ import { injectable } from "inversify";
 
 import type { InfrastructureSchema } from "../schemas";
 
-import type { InfrastructureDao } from "../interfaces";
+import type { InfrastructureDao } from "../../../application/interfaces";
+
 import { InfrastructureEntity } from "../../../domain/entities";
 
 @injectable()

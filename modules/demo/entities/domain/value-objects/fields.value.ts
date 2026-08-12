@@ -1,6 +1,6 @@
 import { ArrayValue, rule } from "@schorts/shared-kernel";
 
-import type { EntitySchema } from "../../../../../schemas";
+import type { EntityPrimitives } from "../types";
 
 const SCHEMA = {
   name: [rule({ required: true }), rule({ type: 'string' })],
@@ -18,11 +18,11 @@ const SCHEMA = {
   },
 };
 
-export class FieldsValue extends ArrayValue<EntitySchema["fields"][number]> {
+export class FieldsValue extends ArrayValue<EntityPrimitives["fields"][number]> {
   readonly attributeName = "fields";
   readonly isPrimitive = false;
 
-  constructor(value: EntitySchema["fields"]) {
+  constructor(value: EntityPrimitives["fields"]) {
     super(value, SCHEMA);
   }
 }

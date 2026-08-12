@@ -1,4 +1,4 @@
-import type { UseCaseDao } from "../interfaces";
+import type { UseCaseDao } from "../../../application/interfaces";
 
 import { UseCaseEntity } from "../../../domain/entities";
 

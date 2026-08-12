@@ -6,9 +6,9 @@ import { MainDatabaseSeeder } from "../../modules/demo/database/infrastructure/d
 import { EntitiesSeeder } from "../../modules/demo/entities/infrastructure/database/seeders";
 import { UseCasesSeeder } from "../../modules/demo/use-cases/infrastructure/database/seeders";
 import { InfrastructuresSeeder } from "../../modules/demo/infrastructures/infrastructure/database/seeders";
-import type { EntityDao } from "../../modules/demo/entities/infrastructure/database/interfaces";
-import type { UseCaseDao } from "../../modules/demo/use-cases/infrastructure/database/interfaces";
-import type { InfrastructureDao } from "../../modules/demo/infrastructures/infrastructure/database/interfaces";
+import type { EntityDao } from "../../modules/demo/entities/application/interfaces";
+import type { UseCaseDao } from "../../modules/demo/use-cases/application/interfaces";
+import type { InfrastructureDao } from "../../modules/demo/infrastructures/application/interfaces";
 
 export function DatabaseInitializer() {
   const { container, TYPES } = useContext(DependencyInjectionContext);
