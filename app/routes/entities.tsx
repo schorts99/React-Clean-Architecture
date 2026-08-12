@@ -3,7 +3,7 @@ import { Entities as EntitiesPage } from "~/pages/entities/entities";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Entities - React Clean Architecture" },
+    { title: "Domain Entities - React Clean Architecture" },
   ];
 }
 

@@ -3,7 +3,7 @@ import { Overview as OverviewPage } from "../pages/overview/overview";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Overview - React Clean Architecture" },
+    { title: "Architecture Overview - React Clean Architecture" },
   ];
 }
 
