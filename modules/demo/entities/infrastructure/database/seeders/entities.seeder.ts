@@ -1,8 +1,8 @@
-import type { Seeder } from "../../../../../shared/data";
-
 import type { EntityDao } from "../interfaces";
 
 import { EntityEntity } from "../../../domain/entities";
+
+import type { Seeder } from "../../../../../shared/data";
 
 export class EntitiesSeeder implements Seeder {
   constructor(
