@@ -1,4 +1,4 @@
-import { useAllEntities } from "~/hooks/all-entities.hook";
+import { useAllEntities } from "~/hooks";
 
 import { PageHeader } from "~/components/page-header";
 import { EntityCard } from "~/components/entities/entity-card";

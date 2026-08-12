@@ -1,6 +1,11 @@
+import { useAllUseCases } from "~/hooks";
+
 import { PageHeader } from "~/components/page-header";
+import { UseCaseCard } from "~/components/use-cases/use-case-card";
 
 export function UseCases() {
+  const { loading, useCases } = useAllUseCases();
+
   return (
     <>
       <PageHeader
@@ -9,7 +14,13 @@ export function UseCases() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-
+        {loading
+          ? null
+          : useCases.map((useCase) => (
+            <UseCaseCard
+              key={useCase.id}
+            />
+          ))}
       </div>
     </>
   );

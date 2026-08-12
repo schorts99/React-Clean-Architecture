@@ -37,6 +37,57 @@ export class UseCasesSeeder implements Seeder {
             },
           ],
         }),
+        UseCaseEntity.fromPrimitives({
+          id: "bbdab9d2-1bf3-4ed1-b17d-7079af2d9cf6",
+          name: "GetAllEntitiesQuery",
+          description: "Retrieves all entities configured in the application.",
+          type: "QUERY",
+          dependencies: [
+            {
+              name: "EntityDao",
+            },
+            {
+              name: "Cache",
+            },
+            {
+              name: "Logger",
+            },
+          ],
+        }),
+        UseCaseEntity.fromPrimitives({
+          id: "fbcbb821-739f-4f8d-8bf8-4f8741908c63",
+          name: "GetAllUseCasesQuery",
+          description: "Retrieves all use cases configured in the application.",
+          type: "QUERY",
+          dependencies: [
+            {
+              name: "UseCaseDao",
+            },
+            {
+              name: "Cache",
+            },
+            {
+              name: "Logger",
+            },
+          ],
+        }),
+        UseCaseEntity.fromPrimitives({
+          id: "a3a38d60-b1e6-4919-bcbd-12f3750cc39e",
+          name: "GetAllInfrastructuresQuery",
+          description: "Retrieves all infrastructure components configured in the application.",
+          type: "QUERY",
+          dependencies: [
+            {
+              name: "InfrastructureDao",
+            },
+            {
+              name: "Cache",
+            },
+            {
+              name: "Logger",
+            },
+          ],
+        }),
       ];
 
       await this.useCaseDao.saveMany(useCases);
