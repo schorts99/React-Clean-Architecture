@@ -11,11 +11,11 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { TYPES } from "../di/types";
-import { registerEntities } from "./bootstrap";
-import { registerQueries } from "./bootstrap";
+import { registerEntities, registerQueries } from "./bootstrap";
 
 import { Providers } from "~/providers";
 import { MainLayout } from "~/layouts/main-layout";
+import { DatabaseInitializer } from "./components/database-initializer";
 
 import { type AuthProvider } from "../modules/common/auth/application/interfaces";
 
@@ -71,6 +71,8 @@ export default function App() {
       <MainLayout>
         <Outlet />
       </MainLayout>
+
+      <DatabaseInitializer />
     </Providers>
   );
 }

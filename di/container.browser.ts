@@ -22,6 +22,7 @@ import { InfrastructureIndexedDbDao } from "../modules/demo/infrastructures/infr
 import { OverviewDatabaseQueryService } from "../modules/demo/overview/infrastructure/database/services";
 
 import type { OverviewQueryService } from "../modules/demo/overview/application/services";
+import { GetOverviewQueryHandler } from "../modules/demo/overview/application/query-handlers";
 
 import { type AppStateManager } from "../modules/common/state/application/interfaces";
 import { type AuthProvider } from '../modules/common/auth/application/interfaces';
@@ -57,12 +58,23 @@ export function createBrowserContainer(): Container {
         ],
       ).initialize(),
     );
-    container.bind<EntityDao>(TYPES.ENTITY_DAO).to(EntityIndexedDbDao).inSingletonScope();
-    container.bind<UseCaseDao>(TYPES.USE_CASE_DAO).to(UseCaseIndexedDbDao).inSingletonScope();
+    container.bind<EntityDao>(TYPES.ENTITY_DAO).toConstantValue(
+      new EntityIndexedDbDao(
+        container.getAsync<IDBDatabase>(TYPES.INDEXED_DB),
+      ),
+    );
+    container.bind<UseCaseDao>(TYPES.USE_CASE_DAO).toConstantValue(
+      new UseCaseIndexedDbDao(
+        container.getAsync<IDBDatabase>(TYPES.INDEXED_DB),
+      ),
+    );
     container
       .bind<InfrastructureDao>(TYPES.INFRASTRUCTURE_DAO)
-      .to(InfrastructureIndexedDbDao)
-      .inSingletonScope();
+      .toConstantValue(
+        new InfrastructureIndexedDbDao(
+          container.getAsync<IDBDatabase>(TYPES.INDEXED_DB),
+        ),
+      );
   }
 
   if (typeof window !== "undefined" && "caches" in window) {
@@ -76,6 +88,10 @@ export function createBrowserContainer(): Container {
   container
     .bind<OverviewQueryService>(TYPES.OVERVIEW_QUERY_SERVICE)
     .to(OverviewDatabaseQueryService);
+  container
+    .bind<GetOverviewQueryHandler>(TYPES.GET_OVERVIEW_QUERY_HANDLER)
+    .to(GetOverviewQueryHandler)
+    .inSingletonScope();
   container.bind<QueryBus>(TYPES.QUERY_BUS).to(InMemoryQueryBus).inSingletonScope();
 
   return container;

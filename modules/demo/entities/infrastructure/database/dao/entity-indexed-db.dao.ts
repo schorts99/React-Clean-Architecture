@@ -1,7 +1,5 @@
 import { IndexedDBDAO } from "@schorts/indexed-db-dao";
-import { inject, injectable } from "inversify";
-
-import { TYPES } from "../../../../../../di/types";
+import { injectable } from "inversify";
 
 import type { EntitySchema } from "../schemas";
 
@@ -12,7 +10,7 @@ import { EntityEntity } from "../../../domain/entities";
 export class EntityIndexedDbDao
 extends IndexedDBDAO<EntitySchema, EntityEntity>
 implements EntityDao {
-  constructor(@inject(TYPES.INDEXED_DB) db: Promise<IDBDatabase>) {
+  constructor(db: Promise<IDBDatabase>) {
     super(db, "entities");
   }
 }

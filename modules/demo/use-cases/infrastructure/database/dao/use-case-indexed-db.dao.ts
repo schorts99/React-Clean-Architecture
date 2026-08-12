@@ -1,7 +1,5 @@
 import { IndexedDBDAO } from "@schorts/indexed-db-dao";
-import { inject, injectable } from "inversify";
-
-import { TYPES } from "../../../../../../di/types";
+import { injectable } from "inversify";
 
 import type { UseCaseSchema } from "../schemas";
 
@@ -13,7 +11,7 @@ export class UseCaseIndexedDbDao
 extends IndexedDBDAO<UseCaseSchema, UseCaseEntity>
 implements UseCaseDao {
 
-  constructor(@inject(TYPES.INDEXED_DB) db: Promise<IDBDatabase>) {
+  constructor(db: Promise<IDBDatabase>) {
     super(db, "use_cases");
   }
 }

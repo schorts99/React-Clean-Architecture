@@ -1,13 +1,20 @@
 import { type ReactNode } from "react";
 
-import { DependencyInjectionProvider, AuthProvider, CurrentUserProvider } from "~/contexts";
+import {
+  DependencyInjectionProvider,
+  AuthProvider,
+  CurrentUserProvider,
+  CQRSProvider,
+} from "~/contexts";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <DependencyInjectionProvider>
       <AuthProvider>
         <CurrentUserProvider>
-          {children}
+          <CQRSProvider>
+            {children}
+          </CQRSProvider>
         </CurrentUserProvider>
       </AuthProvider>
     </DependencyInjectionProvider>

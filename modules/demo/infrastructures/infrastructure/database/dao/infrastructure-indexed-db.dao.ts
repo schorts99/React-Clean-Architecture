@@ -1,7 +1,5 @@
 import { IndexedDBDAO } from "@schorts/indexed-db-dao";
-import { inject, injectable } from "inversify";
-
-import { TYPES } from "../../../../../../di/types";
+import { injectable } from "inversify";
 
 import type { InfrastructureSchema } from "../schemas";
 
@@ -12,7 +10,7 @@ import { InfrastructureEntity } from "../../../domain/entities";
 export class InfrastructureIndexedDbDao
 extends IndexedDBDAO<InfrastructureSchema, InfrastructureEntity>
 implements InfrastructureDao {
-  constructor(@inject(TYPES.INDEXED_DB) db: Promise<IDBDatabase>) {
-    super(db, "Infrastructures");
+  constructor(db: Promise<IDBDatabase>) {
+    super(db, "infrastructures");
   }
 }

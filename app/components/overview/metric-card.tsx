@@ -1,16 +1,20 @@
 import { type LucideIcon } from "lucide-react";
 
+import { Skeleton } from "~/components/ui/skeleton";
+
 export function MetricCard({
   Icon,
   label,
   value,
- subtitle,
+  subtitle,
+  loading,
   className = "",
 }: {
   Icon: LucideIcon;
   label: string;
   value: string;
   subtitle: string;
+  loading: boolean;
   className?: string;
 }) {
   return (
@@ -31,9 +35,13 @@ export function MetricCard({
           {label}
         </p>
         <div className="flex items-baseline gap-sm">
-          <p className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
-            {value}
-          </p>
+          {loading ? (
+            <Skeleton className="h-9 w-10 bg-surface-container" />
+            ) : (
+            <p className="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary">
+              {value}
+            </p>
+          )}
           <span className="text-label-md font-label-md text-outline md:hidden">
             {subtitle}
           </span>

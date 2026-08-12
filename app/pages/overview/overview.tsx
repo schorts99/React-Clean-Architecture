@@ -1,9 +1,13 @@
 import { Network, DraftingCompass, EthernetPort } from "lucide-react";
 
+import { useOverview } from "~/hooks";
+
 import { PageHeader } from "~/components/page-header";
 import { MetricCard } from "~/components/overview/metric-card";
 
 export function Overview() {
+  const { loading, overview } = useOverview();
+
   return (
     <>
       <PageHeader
@@ -15,8 +19,9 @@ export function Overview() {
         <MetricCard
           Icon={Network}
           label="Total Entities"
-          value="24"
+          value={overview.entitiesCount.toString()}
           subtitle="models defined"
+          loading={loading}
           className="min-h-35"
         />
 
@@ -24,13 +29,15 @@ export function Overview() {
           <MetricCard
             Icon={DraftingCompass}
             label="Use Cases"
-            value="12"
+            value={overview.useCasesCount.toString()}
+            loading={loading}
             subtitle="active flows"
           />
           <MetricCard
             Icon={EthernetPort}
             label="Providers"
-            value="3"
+            value={overview.infrastructuresCount.toString()}
+            loading={loading}
             subtitle="infrastructure"
           />
         </div>
