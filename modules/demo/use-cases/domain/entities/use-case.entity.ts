@@ -23,7 +23,7 @@ export class UseCaseEntity extends Entity<IdValue, UseCasePrimitives> {
 
   toPrimitives(): UseCasePrimitives {
     return {
-      id: this.name.value,
+      id: this.id.value,
       type: this.type.value,
       name: this.name.value,
       description: this.description.value,

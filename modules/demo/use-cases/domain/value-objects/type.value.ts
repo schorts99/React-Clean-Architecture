@@ -1,6 +1,6 @@
 import { EnumValue } from "@schorts/shared-kernel";
 
-const ALLOWED_VALUES = ["QUERY"] as const;
+const ALLOWED_VALUES = ["QUERY", "QUERY_SERVICE"] as const;
 
 export class TypeValue extends EnumValue<typeof ALLOWED_VALUES> {
   readonly attributeName = "type";
