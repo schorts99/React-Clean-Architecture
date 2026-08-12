@@ -15,21 +15,10 @@ export class UseCasesSeeder implements Seeder {
     if (useCasesCount === 0) {
       const useCases: UseCaseEntity[] = [
         UseCaseEntity.fromPrimitives({
-          id: "24cfeeef-600d-4d0f-ab22-762512e0081e",
-          name: "GetOverviewQuery",
-          description: "Represents a request to retrieve the application overview.",
-          type: "QUERY",
-          dependencies: [
-            {
-              name: "OverviewQueryService",
-            },
-          ],
-        }),
-        UseCaseEntity.fromPrimitives({
           id: "d398c192-4b7d-4b11-a076-0af12c627aed",
-          name: "OverviewQueryService",
-          description: "Reads and aggregates application data from entities and infrastructure components to provide the application overview.",
-          type: "QUERY_SERVICE",
+          name: "OverviewQuery",
+          description: "Retrieves an overview of the entities, use cases, and infrastructures configured in the application.",
+          type: "QUERY",
           dependencies: [
             {
               name: "EntityDao",
@@ -39,6 +28,12 @@ export class UseCasesSeeder implements Seeder {
             },
             {
               name: "InfrastructureDao",
+            },
+            {
+              name: "Cache",
+            },
+            {
+              name: "Logger",
             },
           ],
         }),

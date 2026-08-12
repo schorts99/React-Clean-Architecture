@@ -2,7 +2,7 @@ export type UseCaseSchema = {
   id: string;
   name: string;
   description: string;
-  type: "QUERY" | "QUERY_SERVICE";
+  type: "QUERY";
   dependencies: Array<{
     name: string;
   }>;
