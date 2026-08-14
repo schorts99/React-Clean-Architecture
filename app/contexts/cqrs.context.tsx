@@ -7,6 +7,8 @@ import { GetOverviewQuery } from "../../modules/demo/overview/application/querie
 import type { GetOverviewQueryHandler } from "../../modules/demo/overview/application/query-handlers";
 import { GetAllEntitiesQuery } from "../../modules/demo/entities/application/queries";
 import type { GetAllEntitiesQueryHandler } from "../../modules/demo/entities/application/query-handlers";
+import { GetAllUseCasesQuery } from "../../modules/demo/use-cases/application/queries";
+import type { GetAllUseCasesQueryHandler } from "../../modules/demo/use-cases/application/query-handlers";
 
 export const CQRSContext = createContext<{
   queryBus: QueryBus;
@@ -32,6 +34,10 @@ export function CQRSProvider({
         queryBusInstance.register(
           GetAllEntitiesQuery.type,
           container.get<GetAllEntitiesQueryHandler>(TYPES.GET_ALL_ENTITIES_QUERY_HANDLER),
+        );
+        queryBusInstance.register(
+          GetAllUseCasesQuery.type,
+          container.get<GetAllUseCasesQueryHandler>(TYPES.GET_ALL_USE_CASES_QUERY_HANDLER),
         );
       }
     }

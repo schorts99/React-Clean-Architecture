@@ -7,22 +7,22 @@ import { injectable, inject } from "inversify";
 
 import { TYPES } from "../../../../../di/types";
 
-import type { GetAllEntitiesQuery } from "../queries";
-import type { GetAllEntitiesQueryResultDto } from "../dtos";
-import type { EntityDao } from "../interfaces";
+import  { type GetAllUseCasesQuery } from "../queries";
+import type { GetAllUseCasesQueryResultDto } from "../dtos";
+import type { UseCaseDao } from "../interfaces";
 
 @injectable()
-export class GetAllEntitiesQueryHandler extends AbstractQueryHandler<
-  GetAllEntitiesQuery,
-  GetAllEntitiesQueryResultDto
+export class GetAllUseCasesQueryHandler extends AbstractQueryHandler<
+  GetAllUseCasesQuery,
+  GetAllUseCasesQueryResultDto
 > {
   constructor(
     @inject(TYPES.CACHE)
     cacheStore: SharedCache,
     @inject(TYPES.LOGGER)
     logger: Logger,
-    @inject(TYPES.ENTITY_DAO)
-    private readonly entityDao: EntityDao,
+    @inject(TYPES.USE_CASE_DAO)
+    private readonly useCaseDao: UseCaseDao,
   ) {
     super({
       cache: false,
@@ -34,13 +34,13 @@ export class GetAllEntitiesQueryHandler extends AbstractQueryHandler<
     });
   }
 
-  async execute(_query: GetAllEntitiesQuery): Promise<GetAllEntitiesQueryResultDto> {
-    const entityEntities = await this.entityDao.getAll();
+  async execute(): Promise<GetAllUseCasesQueryResultDto> {
+    const useCaseEntities = await this.useCaseDao.getAll();
 
-    return entityEntities.map((entity) => entity.toPrimitives());
+    return useCaseEntities.map((useCase) => useCase.toPrimitives());
   }
 
-  override getCacheKey(query: GetAllEntitiesQuery): string {
+  override getCacheKey(query: GetAllUseCasesQuery): string | null {
     const primitives = query.toPrimitives();
 
     return `${query.getType()}:${JSON.stringify({
@@ -51,6 +51,6 @@ export class GetAllEntitiesQueryHandler extends AbstractQueryHandler<
   }
 
   override getCacheTags(): string[] {
-    return ["entities"];
+    return ["use_cases"];
   }
 }
