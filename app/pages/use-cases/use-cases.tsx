@@ -19,6 +19,7 @@ export function UseCases() {
           : useCases.map((useCase) => (
             <UseCaseCard
               key={useCase.id}
+              useCase={useCase}
             />
           ))}
       </div>

@@ -11,17 +11,6 @@ export function EntityCard({ entity }: { entity: GetAllEntitiesQueryResultDto[nu
     >
       <div className="flex justify-between items-start mb-md">
         <div className="flex items-center gap-sm">
-          <div
-            className={[
-              "w-8 h-8 rounded flex items-center justify-center",
-              "bg-primary-container/10 text-primary-container",
-            ].join(" ")}
-          >
-            <span className="text-xl">
-              {entity.name[0]}
-            </span>
-          </div>
-
           <h3 className="text-headline-sm font-headline-sm text-primary font-bold">
             {entity.name}
           </h3>
