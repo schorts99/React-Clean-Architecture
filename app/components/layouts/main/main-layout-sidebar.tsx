@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { id: "", label: "Overview", Icon: LayoutDashboard },
   { id: "entities", label: "Entities", Icon: Network },
   { id: "use-cases", label: "Use Cases", Icon: DraftingCompass },
-  { id: "infrastructure", label: "Infrastructure", Icon: EthernetPort },
+  { id: "infrastructures", label: "Infrastructure", Icon: EthernetPort },
 ];
 
 export function MainLayoutSidebar() {

@@ -1,4 +1,4 @@
-import type { Route } from "./+types/use-cases"
+import type { Route } from "./+types/use-cases";
 import { UseCases as UseCasesPage } from "~/pages/use-cases/use-cases";
 
 export function meta({}: Route.MetaArgs) {

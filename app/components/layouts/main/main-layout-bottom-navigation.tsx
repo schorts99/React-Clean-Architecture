@@ -5,7 +5,7 @@ const NAV_ITEMS = [
   { id: "", label: "Overview", Icon: LayoutDashboard },
   { id: "entities", label: "Entities", Icon: Network },
   { id: "use-cases", label: "Use Cases", Icon: DraftingCompass },
-  { id: "infrastructure", label: "Infra", Icon: EthernetPort },
+  { id: "infrastructures", label: "Infra", Icon: EthernetPort },
 ];
 
 export function MainLayoutBottomNavigation() {
