@@ -1,5 +1,7 @@
 import { useHealth } from "~/hooks/health.hook";
 
+import { Skeleton } from "~/components/ui/skeleton";
+
 export function HealthCard() {
   const { loading, health } = useHealth();
 
@@ -16,12 +18,21 @@ export function HealthCard() {
 
       <div className="flex items-end justify-between mt-xl">
         <div className="flex flex-col">
-          <span className="text-display font-display text-primary">
-
-          </span>
-          <span className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">
-
-          </span>
+          {loading ? (
+            <>
+              <Skeleton className="bg-surface-container h-13 w-20" />
+              <Skeleton className="bg-surface-container h-3 w-15 mt-1" />
+            </>
+            ) : (
+            <>
+              <span className="text-display font-display text-primary">
+                {health.uptimePercentage}%
+              </span>
+                  <span className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">
+                Uptime ({health.uptimeDays}d)
+              </span>
+            </>
+          )}
         </div>
       </div>
     </div>

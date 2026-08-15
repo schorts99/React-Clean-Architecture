@@ -25,6 +25,7 @@ import { type AppStateManager } from "../modules/common/state/application/interf
 import { type AuthProvider } from '../modules/common/auth/application/interfaces';
 import { GetAllEntitiesQueryHandler } from "../modules/demo/entities/application/query-handlers";
 import { GetAllUseCasesQueryHandler } from "../modules/demo/use-cases/application/query-handlers";
+import { GetHealthQueryHandler } from "../modules/demo/infrastructures/application/query-handlers";
 
 import { type JWTDecoder } from "../modules/shared/jwt/jwt.decoder";
 import { type JWTEncoder } from "../modules/shared/jwt/jwt.encoder";
@@ -95,6 +96,10 @@ export function createBrowserContainer(): Container {
   container
     .bind<GetAllUseCasesQueryHandler>(TYPES.GET_ALL_USE_CASES_QUERY_HANDLER)
     .to(GetAllUseCasesQueryHandler)
+    .inSingletonScope();
+  container
+    .bind<GetHealthQueryHandler>(TYPES.GET_HEALTH_QUERY_HANDLER)
+    .to(GetHealthQueryHandler)
     .inSingletonScope();
   container.bind<QueryBus>(TYPES.QUERY_BUS).to(InMemoryQueryBus).inSingletonScope();
 
