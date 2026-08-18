@@ -7,7 +7,7 @@ import { injectable, inject } from "inversify";
 
 import { TYPES } from "../../../../../di/types";
 
-import  { type GetHealthQuery } from "../queries";
+import type { GetHealthQuery } from "../queries";
 import type { GetHealthQueryResultDto } from "../dtos";
 
 @injectable()

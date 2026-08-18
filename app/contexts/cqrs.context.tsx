@@ -11,6 +11,8 @@ import { GetAllUseCasesQuery } from "../../modules/demo/use-cases/application/qu
 import type { GetAllUseCasesQueryHandler } from "../../modules/demo/use-cases/application/query-handlers";
 import { GetHealthQuery } from "../../modules/demo/infrastructures/application/queries";
 import type { GetHealthQueryHandler } from "../../modules/demo/infrastructures/application/query-handlers";
+import { GetAllInfrastructuresQuery } from "../../modules/demo/infrastructures/application/queries";
+import type { GetAllInfrastructuresQueryHandler } from "../../modules/demo/infrastructures/application/query-handlers";
 
 export const CQRSContext = createContext<{
   queryBus: QueryBus;
@@ -44,6 +46,10 @@ export function CQRSProvider({
         queryBusInstance.register(
           GetHealthQuery.type,
           container.get<GetHealthQueryHandler>(TYPES.GET_HEALTH_QUERY_HANDLER),
+        );
+        queryBusInstance.register(
+          GetAllInfrastructuresQuery.type,
+          container.get<GetAllInfrastructuresQueryHandler>(TYPES.GET_ALL_INFRASTRUCTURES_QUERY_HANDLER),
         );
       }
     }
