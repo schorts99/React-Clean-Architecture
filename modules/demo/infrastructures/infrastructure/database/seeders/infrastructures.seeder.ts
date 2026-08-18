@@ -29,6 +29,8 @@ export class InfrastructuresSeeder implements Seeder {
       ];
 
       await this.infrastructureDao.saveMany(infrastructures);
+
+      return true;
     }
 
     return false;

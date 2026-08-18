@@ -72,6 +72,20 @@ export class UseCasesSeeder implements Seeder {
           ],
         }),
         UseCaseEntity.fromPrimitives({
+          id: "4d2f61cf-29bf-4326-8ab9-99a688c2cc93",
+          name: "GetHealthQuery",
+          description: "Retrieves the health status of the application.",
+          type: "QUERY",
+          dependencies: [
+            {
+              name: "Cache",
+            },
+            {
+              name: "Logger",
+            },
+          ],
+        }),
+        UseCaseEntity.fromPrimitives({
           id: "a3a38d60-b1e6-4919-bcbd-12f3750cc39e",
           name: "GetAllInfrastructuresQuery",
           description: "Retrieves all infrastructure components configured in the application.",
@@ -91,6 +105,8 @@ export class UseCasesSeeder implements Seeder {
       ];
 
       await this.useCaseDao.saveMany(useCases);
+
+      return true;
     }
 
     return false;
