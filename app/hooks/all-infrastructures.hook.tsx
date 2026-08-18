@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useMemo } from "react";
 
 import { CQRSContext } from "~/contexts";
 
@@ -9,6 +9,11 @@ export function useAllInfrastructures() {
   const { queryBus } = useContext(CQRSContext);
   const [loading, setLoading] = useState<boolean>(true);
   const [infrastructures, setInfrastructures] = useState<GetAllInfrastructuresQueryResultDto>([]);
+  const persistenceAdapters = useMemo(() => {
+    return infrastructures.filter(
+      (infrastructure) => infrastructure.type === "PERSISTENCE",
+    );
+  }, [infrastructures]);
 
   useEffect(() => {
     const getAllInfrastructuresQuery = new GetAllInfrastructuresQuery(crypto.randomUUID());
@@ -24,5 +29,6 @@ export function useAllInfrastructures() {
   return {
     loading,
     infrastructures,
+    persistenceAdapters,
   };
 }
