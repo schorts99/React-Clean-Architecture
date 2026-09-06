@@ -11,7 +11,6 @@ import { UseCaseEntity } from "../../../domain/entities";
 export class UseCaseIndexedDbDao
 extends IndexedDBDAO<UseCaseSchema, UseCaseEntity>
 implements UseCaseDao {
-
   constructor(db: Promise<IDBDatabase>) {
     super(db, "use_cases");
   }
